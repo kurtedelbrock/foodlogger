@@ -13,22 +13,59 @@
 
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
 
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 </head>
 <body>
-  <script type="text/x-handlebars" data-template-name="application">
-    <h1>Hello from Ember.js</h1>
-  </script>
+  <header class="navbar">
+    <div class="navbar-inner">
+      <a class="brand" href="#">FoodLogger</a>
+      <ul class="nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+      </ul>
+    </div>
+  </header>
+  
+  
+    
+    <script type="text/x-handlebars" data-template-name="index">
+      <div class="container">
+        <h1>Hello from Ember.js</h1>
+        <p>Lorem  sdkflkds falds fjlakdsjf lkadsf lads</p>
+        
+        <!-- Add New Food -->
+        <div class="navbar">
+          <div class="navbar-inner">
+            <form class="navbar-form pull-left">
+              {{view Ember.TextField valueBinding="newFoodName" class="span10"}}
+              <button {{action "new"}} type="submit" class="btn">Submit</button>
+            </form>
+          </div>
+        </div>
+        
+        <!-- Foods -->
+        
+        <ul>
+          {{#with FoodLogger.foods}}
+              {{#each foods}}
+                  <li>{{this}}</li>
+              {{/each}}
+          {{/with}}
+        </ul>
+        
+      </div>
+    </script>
 
   <!-- The missing protocol means that it will match the current protocol, either http or https. If running locally, we use the local jQuery. -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')</script>
   <script src="js/libs/handlebars-1.0.0.beta.6.js"></script>
-  <script src="js/libs/ember-1.0.0-pre.2.min.js"></script>
+  <script src="http://cloud.github.com/downloads/emberjs/ember.js/ember-latest.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

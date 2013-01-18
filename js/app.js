@@ -1,16 +1,17 @@
-var App = Ember.Application.create();
+var FoodLogger = Ember.Application.create();
 
-App.ApplicationController = Ember.Controller.extend();
-App.ApplicationView = Ember.View.extend({
-  templateName: 'application'
+FoodLogger.ApplicationController = Ember.Controller.extend();
+
+FoodLogger.foods = Ember.Object.create({
+    "foods": Ember.A([""])
 });
 
-App.Router = Ember.Router.extend({
-  root: Ember.Route.extend({
-    index: Ember.Route.extend({
-      route: '/'
-    })
-  })
-})
+FoodLogger.IndexController = Ember.ObjectController.extend({
+  new: function() {
+   FoodLogger.foods.foods.pushObject(this.get("newFoodName"))
+   console.log(FoodLogger.foods.foods); 
+  },
+  newFoodName: ""
+});
 
-App.initialize();
+FoodLogger.initialize();
